@@ -48,3 +48,12 @@ supports PHP).
 
 Create a new virtual host (vhost) that points to the `web` directory within 
 this repository. 
+
+Make sure that `mod_rewrite` is enabled and overrides are allowed:
+
+```
+  AllowOverride All 
+```
+
+See the (Silex documentation)[http://silex.sensiolabs.org/doc/web_servers.html] 
+how to setup a vhost for Apache, Nginx, IIS or Lighttpd.
