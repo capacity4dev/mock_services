@@ -1,5 +1,17 @@
 {
-    "require": {
-        "silex/silex": "~1.1"
+  "require": {
+    "silex/silex": "1.3.*@dev",
+    "twig/twig": "1.17.*@dev"
+  },
+
+  "require-dev": {
+    "symfony/var-dumper": "dev-master",
+    "phpunit/phpunit": "4.5.*"
+  },
+
+  "autoload": {
+    "psr-4": {
+      "MockLdap\\": "src/MockLdap/"
     }
+  }
 }

@@ -11,8 +11,4 @@
  */
 
 
-/**
- * Default index file for the application.
- */
-$app = require_once __DIR__ . '/../src/app.php';
-$app->run();
+require_once __DIR__ . '/../vendor/autoload.php';

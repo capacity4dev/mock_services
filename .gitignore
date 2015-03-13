@@ -1,4 +1,6 @@
 
-# No vendor in repository.
+# No vendors in repository.
 vendor
 
+# Test results & automated builds.
+build
