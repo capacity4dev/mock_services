@@ -1,0 +1,13 @@
+{# XML response when successfull. #}
+<?xml version="1.0" encoding="UTF-8"?>
+<user>
+    <valid>{{ valid }}</valid>
+    <title>{{ title }}</title>
+    <userid>{{ userId }}</userid>
+    <fname>{{ firstName }}</fname>
+    <lname>{{ lastName }}</lname>
+    <email>{{ email }}</email>
+    <dg>{{ department }}</dg>
+    <country iso="{{ country.iso }}">{{ country.name }}</country>
+    <region>{{ country.region }}</region>
+</user>
