@@ -15,6 +15,7 @@ require_once __DIR__ . '/bootstrap.php';
 
 use Silex\Application;
 use Silex\Provider\TwigServiceProvider;
+use Igorw\Silex\ConfigServiceProvider;
 
 
 $app = new Application();
@@ -33,6 +34,12 @@ $app->register(
         ),
     )
 );
+
+// Add config.
+$app->register(new ConfigServiceProvider(__DIR__ . "/config/config.php"));
+
+// Add dummy data.
+$app->register(new ConfigServiceProvider(__DIR__ . '/config/dummyData.php'));
 
 // Routes.
 $app->get('/', 'MockLdap\Controller\ServiceController::index');
