@@ -1,11 +1,11 @@
 
 # Mock Services
 
-The European Commision provides web services but those are only available from 
+The European Commission provides web services but those are only available from 
 within the EC network (and sometimes only from the production web services).
  
 This set of mocked services allow developers to develop functionality against 
-these services without the need to realy access them.
+these services without the need to really access them.
 
 
 ## Installation
