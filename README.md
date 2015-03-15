@@ -1,6 +1,9 @@
 
 # Mock Services
 
+[![License : MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](http://opensource.org/licenses/MIT)
+[![Build Status](https://img.shields.io/travis/capacity4dev/mock_services/develop.svg?style=flat-square)](https://travis-ci.org/capacity4dev/mock_services)
+
 The European Commission provides web services but those are only available from 
 within the EC network (and sometimes only from the production web services).
  
@@ -31,12 +34,22 @@ The service will validate if:
    be validated as not valid.
 3. If the email address has one of the supported email addresses (see config).
 
-It will return a XML structured response with following structure:
+Examples of valid email addresses:
+
+* john@ec.europa.eu
+* jane.doe@ec.europa.eu
+
+Examples of invalid email addresses:
+
+* john.doe@gmail.com
+* invalid.jane.doe@ec.europa.eu
+
+The service will return a XML structured response with following structure:
 
 ```
 <user>
     <valid>[valid/invalid]</valid>
-    <title>[mr/ms/mss]</title>
+    <title>[Mr/Ms/Mss]</title>
     <userid>[the username of the user]</userid>
     <fname>[the firstname of the user]</fname>
     <lname>[the lastame of the user]</lname>
@@ -46,6 +59,9 @@ It will return a XML structured response with following structure:
     <region>[the region of the country]</region>
 </user>
 ```
+
+Note: only the *valid* field will be filled in with *invalid* when a non valid
+email address was validated.
 
 #### Usage
 
@@ -60,6 +76,8 @@ Example:
 ```
 http://<URL TO MOCK SERVER>/ldap?event=c4d.checkUser&email=test.me@ec.europa.eu
 ```
+
+
 
 #### Configuration
 
