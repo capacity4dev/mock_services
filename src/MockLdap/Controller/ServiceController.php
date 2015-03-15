@@ -17,6 +17,7 @@ namespace MockLdap\Controller;
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use MockLdap\Model\EmailValidator;
 
 
 /**
@@ -34,6 +35,11 @@ class ServiceController
      */
     public function index(Request $request, Application $app)
     {
+        //var_dump($app['configuration']);
+        //var_dump($app['dummyData']);
+
+        $data = array();
+
         // Get the email address.
         $event = $request->get('event', null);
         if ($event !== 'c4d.checkUser') {
@@ -41,23 +47,35 @@ class ServiceController
         }
 
         $email = $request->get('email', null);
-        
 
-        // Process the request.
-        $data = array(
-            'valid' => 'valid',
-            'title' => '',
-            'userId' => '',
-            'firstName' => '',
-            'lastName' => '',
-            'email' => $email,
-            'department' => '',
-            'country' => array(
-                'iso' => '',
-                'name' => '',
-                'region' => '',
-            ),
+        $config = $app['configuration'];
+        $validator = new EmailValidator(
+            $config['ldap.domains'],
+            $config['ldap.invalid']
         );
+        if (!$validator->isValid($email)) {
+            $data['valid'] = 'invalid';
+        }
+        else {
+            // $dataProvider = new MockLdap\Model\Provider\Ldap($app['dummyData']);
+            // $data = $dataProvider->load($email);
+
+            // Process the request.
+            $data = array(
+                'valid' => 'valid',
+                'title' => '',
+                'userId' => '',
+                'firstName' => '',
+                'lastName' => '',
+                'email' => $email,
+                'department' => '',
+                'country' => array(
+                    'iso' => '',
+                    'name' => '',
+                    'region' => '',
+                ),
+            );
+        }
 
         // Create the XML.
         $content = $app['twig']->render('response.xml.twig', $data);

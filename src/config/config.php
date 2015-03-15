@@ -8,7 +8,7 @@ $configuration = array();
  * Allowed email domain.
  * Only email addresses with one of these domains will be "valid".
  */
-$configuration['domains'] = array(
+$configuration['ldap.domains'] = array(
     'ext.ec.europa.eu',
     'ec.europa.eu',
     'cec.eu.int',
@@ -22,6 +22,6 @@ $configuration['domains'] = array(
  * Pattern that will be used to identify if a given email address must be
  * validated as an invalid one.
  */
-$configuration['pattern.invalid'] = '/^invalid/';
+$configuration['ldap.invalid'] = '/^invalid/';
 
 return array('configuration' => $configuration);

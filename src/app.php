@@ -42,6 +42,6 @@ $app->register(new ConfigServiceProvider(__DIR__ . "/config/config.php"));
 $app->register(new ConfigServiceProvider(__DIR__ . '/config/dummyData.php'));
 
 // Routes.
-$app->get('/', 'MockLdap\Controller\ServiceController::index');
+$app->get('/ldap', 'MockLdap\Controller\ServiceController::index');
 
 return $app;
