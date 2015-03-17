@@ -18,6 +18,7 @@ use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use MockLdap\Model\EmailValidator;
+use MockLdap\Model\DataProvider;
 
 
 /**
@@ -57,24 +58,8 @@ class ServiceController
             $data['valid'] = 'invalid';
         }
         else {
-            // $dataProvider = new MockLdap\Model\Provider\Ldap($app['dummyData']);
-            // $data = $dataProvider->load($email);
-
-            // Process the request.
-            $data = array(
-                'valid' => 'valid',
-                'title' => '',
-                'userId' => '',
-                'firstName' => '',
-                'lastName' => '',
-                'email' => $email,
-                'department' => '',
-                'country' => array(
-                    'iso' => '',
-                    'name' => '',
-                    'region' => '',
-                ),
-            );
+            $dataProvider = new DataProvider($app['dummyData']);
+            $data = $dataProvider->load($email);
         }
 
         // Create the XML.
